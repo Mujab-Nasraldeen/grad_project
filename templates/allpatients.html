@@ -1,0 +1,109 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Your Patients</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Your Patients</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+            <!--<ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Your Patient</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">All Patient</a>
+                </li>
+            </ul> -->
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">Your Patients</h4>
+                    <a class="btn btn-primary btn-round ml-auto" href="{% url 'createMedical' %}" role="button">
+                        <i class="fa fa-plus"></i>
+                        Add Medical Report
+                    </a>
+                </div>
+            </div>
+            <div class="card-body">
+                <!--<div class="tab-content mt-2 mb-3" id="pills-tabContent">-->
+                    <!--<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">-->
+                        <div class="table-responsive">
+                            <!-- multi-filter-select -->
+                            <table id="add-row" class="display table table-striped table-hover" >
+                                <thead>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Phone</th>
+                                        <th>Relative Phone</th>
+                                        <th>Age</th>
+                                        <th>Address</th>
+                                        <th>City</th>
+                                        <th>Gender</th>
+                                        <th>Hospital</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Phone</th>
+                                        <th>Relative Phone</th>
+                                        <th>Age</th>
+                                        <th>Address</th>
+                                        <th>City</th>
+                                        <th>Gender</th>
+                                        <th>Hospital</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for p in ptsdr %}
+                                    <tr>
+                                        <td>{{p.firstname}}</td>
+                                        <td>{{p.lastname}}</td>
+                                        <td>{{p.personal_phone}}</td>
+                                        <td>{{p.relative_phone}}</td>
+                                        <td>{{p.calcAge}}</td>
+                                        <td>{{p.address}}</td>
+                                        <td>{{p.city}}</td>
+                                        <td>{{p.gender}}</td>
+                                        <td>{{p.hospital}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!--<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">-->
+                        
+                    <!--</div>-->
+
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

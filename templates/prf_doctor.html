@@ -1,0 +1,49 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Doctor</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Your Profile</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-6 ml-auto mr-auto">
+        <div class="card card-post card-round">
+            <center><img class="card-img-top" src="{% static '/img/drprf.png' %}" style="width:200px;height:200px;" alt="Card image cap"></center>
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="avatar">
+                        <img src="{{ request.user.doctor.picture.url }}" alt="..." class="avatar-img rounded-circle">
+                    </div>
+                    <div class="info-post ml-2">
+                        <p class="username">{{request.user.doctor.firstname}} {{request.user.doctor.lastname}}</p>
+                        <p class="date text-muted">Phone Number: {{request.user.doctor.phone}}</p>
+                    </div>
+                </div>
+                <div class="separator-solid"></div>
+                <p class="card-category text-info mb-1">Speciality: <a href="#">{{request.user.doctor.speciality}}</a></p>
+                <h5 class="card-title">
+                    <a href="#">
+                        Workplace: {{request.user.doctor.workplace}}
+                    </a>
+                </h5>
+                <p class="card-text">Gender: {{request.user.doctor.gender}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

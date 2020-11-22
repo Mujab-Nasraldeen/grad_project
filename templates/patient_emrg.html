@@ -1,0 +1,124 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Patients</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-home"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Patients</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Patients Emergency</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-6 ml-auto mr-auto">
+        <div class="card card-post card-round">
+            <center><img class="card-img-top" src="{% static '/img/medical2.png' %}" style="width:200px;height:200px;" alt="Card image cap"></center>
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="avatar">
+                        <img src="{{ ptmdr.patient.picture.url }}" alt="..." class="avatar-img rounded-circle">
+                    </div>
+                    <div class="info-post ml-2">
+                        <p class="username">{{ptmdr.patient}}</p>
+                        <p class="date text-muted">His Phone Number: {{ptmdr.patient.relative_phone}}</p>
+                    </div>
+                </div>
+                <div class="separator-solid"></div>
+                <p class="card-category text-info mb-1">Please, Call His Relative: <a href="#">{{ptmdr.patient.relative_phone}}</a></p>
+                <h5 class="card-title">
+                    <a href="#">
+                        Address: {{ptmdr.patient.address}}, Lives in {{ptmdr.patient.city}}  
+                    </a>
+                </h5>
+                <p class="card-text">Age: {{ptmdr.patient.calcAge}} years old</p>
+                <p class="card-text">Gender: {{ptmdr.patient.gender}}</p>
+                <p class="card-text">Ambulance: {{ptmdr.patient.hospital.emergency}}</p>
+                <p class="card-text">Central Ambulance: 777</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 ml-auto mr-auto">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span>Please Follow These Health Tips:</span>
+                </div>
+            </div>
+            <div class="card-body">
+                <p><b> {{ptmdr.report}} </b></p>
+                <br>
+                Last Updated By: <p class="username">Dr.{{ptmdr.doctor}}</p>
+            </div>                   
+        </div>
+    </div>
+</div>
+
+{% for group in user.groups.all %}
+{% if group.name == 'admin' %}
+
+<div class="row">
+    <div class="col-md-6 ml-auto mr-auto">
+        <div class="card">
+            <center><div class="card-header">
+                <h4 class="card-title">{{ptmdr.patient}} QR Code Image</h4>
+            </div></center>
+            <center><div class="card-body">
+                    <p id="qr-result">We Use This To Help {{ptmdr.patient}}</p>
+                    <canvas id="qr-code"></canvas>
+            </div></center>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+		<script>
+			/* JS comes here */
+			var qr;
+			(function() {
+                    qr = new QRious({
+                    element: document.getElementById('qr-code'),
+                    size: 200,
+                    value: "{{request.build_absolute_uri}}"
+                });
+            })();
+            
+            function generateQRCode() {
+                var qrtext = document.getElementById("qr-text").value;
+                document.getElementById("qr-result").innerHTML = "QR code for " + qrtext +":";
+                alert(qrtext);
+                qr.set({
+                    foreground: 'black',
+                    size: 200,
+                    value: qrtext
+                });
+            }
+		</script>
+{% endblock %}

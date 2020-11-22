@@ -1,0 +1,74 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Your Doctor</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Your Doctor</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">Your Doctor</h4>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <!-- multi-filter-select -->
+                    <table id="add-row" class="display table table-striped table-hover" >
+                        <thead>
+                            <tr>
+                                <th>Doctor Name</th>
+                                <th>Speciality</th>
+                                <th>Clinic Number</th>
+                                <th>Workplace Hospital</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Doctor Name</th>
+                                <th>Speciality</th>
+                                <th>Clinic Number</th>
+                                <th>Workplace Hospital</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr>
+                                <td>{{ request.user.patient.doctor }}</td>
+                                <td>{{ request.user.patient.doctor.speciality }}</td>
+                                <td>{{ request.user.patient.doctor.phone }}</td>
+                                <td>{{ request.user.patient.doctor.workplace }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

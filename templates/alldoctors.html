@@ -1,0 +1,122 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Doctors</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Doctors</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">All Doctors</h4>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <!-- multi-filter-select -->
+                    <!-- if user is doctor -->
+                    {% for group in user.groups.all %}
+                    {% if group.name == 'doctor' %}
+                    <table id="add-row" class="display table table-striped table-hover" >
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Speciality</th>
+                                <th>Phone Number</th>
+                                <th>Workplace Hospital</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Speciality</th>
+                                <th>Phone Number</th>
+                                <th>Workplace Hospital</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for doctor in doctors %}
+                            <tr>
+                                <td>{{doctor.firstname}}</td>
+                                <td>{{doctor.lastname}}</td>
+                                <td>{{doctor.speciality}}</td>
+                                <td>{{doctor.phone}}</td>
+                                <td>{{doctor.workplace}}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    <!-- if user is patient -->
+                    {% for group in user.groups.all %}
+                    {% if group.name == 'patient' %}
+                    <table id="add-row" class="display table table-striped table-hover" >
+                        <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Speciality</th>
+                                <th>Clinic Number</th>
+                                <th>Workplace Hospital</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Speciality</th>
+                                <th>Clinic Number</th>
+                                <th>Workplace Hospital</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for doctor in doctors %}
+                            <tr>
+                                <td>{{doctor.firstname}}</td>
+                                <td>{{doctor.lastname}}</td>
+                                <td>{{doctor.speciality}}</td>
+                                <td>{{doctor.phone}}</td>
+                                <td>{{doctor.workplace}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

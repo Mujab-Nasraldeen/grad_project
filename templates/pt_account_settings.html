@@ -1,0 +1,150 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Edit Profile</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Edit Profile</a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span>Edit Your Profile</span>
+                </div>
+            </div>
+
+            <br />
+
+                <form method="POST" action="" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">Your Picture</label>
+                                    {{ form.picture }}
+                                </div>
+                                <span class="text-danger">{{ form.picture.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    {{ form.firstname }}
+                                </div>
+                                <span class="text-danger">{{ form.firstname.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    {{ form.lastname }}
+                                </div>
+                                <span class="text-danger">{{ form.lastname.errors }}</span>
+
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">Gender</label>
+                                    {{ form.gender }}
+                                </div>
+                                <span class="text-danger">{{ form.gender.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Personal Phone Number</label>
+                                    {{ form.personal_phone }}
+                                </div>
+                                <span class="text-danger">{{ form.personal_phone.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Relative Phone Number</label>
+                                    {{ form.relative_phone }}
+                                </div>
+                                <span class="text-danger">{{ form.relative_phone.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Birthday</label>
+                                    {{ form.birthday }}
+                                </div>
+                                <span class="text-danger">{{ form.birthday.errors }}</span>
+
+                                <!--<div class="form-group">
+                                    <label>Birthday</label>
+                                    <div class="input-group date" id="datepicker1" data-target-input="nearest">
+                                        {{ form.birthday }}
+                                        <div class="input-group-append" data-target="#datepicker1" data-toggle="datepicker">
+                                          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                        </div>
+                                      </div>
+                                </div>
+                                <span class="text-danger">{{ form.birthday.errors }}</span>-->
+
+                                <div class="form-group">
+                                    <label>City</label>
+                                    {{ form.city }}
+                                </div>
+                                <span class="text-danger">{{ form.city.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    {{ form.address }}
+                                </div>
+                                <span class="text-danger">{{ form.address.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Hospital</label>
+                                    {{ form.hospital }}
+                                </div>
+                                <span class="text-danger">{{ form.hospital.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Doctor</label>
+                                    {{ form.doctor }}
+                                </div>
+                                <span class="text-danger">{{ form.doctor.errors }}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+
+                </form>
+
+        </div>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="card">
+            <center><div class="card-header">
+                <h4 class="card-title">Your Picture</h4>
+            </div></center>
+            <div class="card-body">
+                <p class="demo">
+                    <center><div class="avatar avatar-xxl">
+                        <img class="avatar-img rounded-circle" src="{{request.user.patient.picture.url}}">
+                    </div> </center>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

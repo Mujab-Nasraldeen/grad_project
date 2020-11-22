@@ -1,0 +1,87 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Edit Medical Record</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Patients Records</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Edit Medical Record</a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span>Edit Medical Record For Patient</span>
+                </div>
+            </div>
+            
+            <br />
+
+                <form method="POST" action="" >
+
+                    {% csrf_token %}
+
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label>Patient</label>
+                                    {{ form.patient }}
+                                    <small class="form-text text-muted">Name of patient is selected by default.</small>
+                                </div>
+                                <span class="text-danger">{{ form.patient.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Doctor</label>
+                                    {{ form.doctor }}
+                                </div>
+                                <span class="text-danger">{{ form.doctor.errors }}</span>
+
+                                <div class="form-group">
+                                    <label>Report</label>
+                                    {{ form.report }}
+                                </div>
+                                <span class="text-danger">{{ form.report.errors }}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                        <button type="submit" class="btn btn-success">Edit</button>
+                    </div>
+
+                </form>
+
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

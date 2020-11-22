@@ -1,0 +1,99 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Hospitals</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-tachometer-alt"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Hospitals</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex align-items-center">
+                    <h4 class="card-title">All Hospitals</h4>
+                    <!-- <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+                        <i class="fa fa-plus"></i>
+                        Add Hospitals
+                    </button> -->
+                    <!--<a class="btn btn-primary btn-round ml-auto" href="#addhospital" role="button">
+                        <i class="fa fa-plus"></i>
+                        Add Hospital
+                    </a>-->
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <!-- multi-filter-select -->
+                    <table id="add-row" class="display table table-striped table-hover" >
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Emergency</th>
+                                <th>Location</th>
+                                <th>Email</th>
+
+                                <!-- <th style="width: 10%">Action</th> -->
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Emergency</th>
+                                <th>Location</th>
+                                <th>Email</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            {% for hospital in hospitals %}
+                            <tr>
+                                <td>{{hospital.name}}</td>
+                                <td>{{hospital.phone}}</td>
+                                <td>{{hospital.emergency}}</td>
+                                <td>{{hospital.location}}</td>
+                                <td>{{hospital.email}}</td>
+                                <!-- <td>
+                                    <div class="form-button-action">
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                        <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
+                                            <i class="fa fa-times"></i>
+                                        </button>
+                                    </div>
+                                </td> -->
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

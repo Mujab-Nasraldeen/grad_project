@@ -1,0 +1,54 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="page-header">
+    <h4 class="page-title">Your Midical Report</h4>
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-home"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Components</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Patients</a>
+        </li>
+        <li class="separator">
+            <i class="fas fa-angle-right"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Your Midical Report</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="col-md-6 ml-auto mr-auto">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span>Your Report:</span>
+                </div>
+            </div>
+            <div class="card-body">
+                {% for pm in ptmdr %}
+                <p><b> {{pm.report}} </b></p>
+                <br>
+                Last Updated By: <p class="username">Dr.{{pm.doctor}}</p>
+                {% endfor %}
+            </div>                 
+        </div>
+    </div>
+</div>
+
+{% endblock %}
