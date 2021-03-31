@@ -140,3 +140,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mujabnasraldeen10@gmail.com'
 EMAIL_HOST_PASSWORD = 'local4567'
+
+#This is my new chenges here to test vscode online

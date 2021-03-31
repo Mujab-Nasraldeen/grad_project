@@ -58,3 +58,5 @@ urlpatterns = [
     path('', include('core.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+#This is my new chenges here to test vscode online
